@@ -4,7 +4,7 @@
 """
 
 import logging
-import HarryPlotter.Utility.logger as logger
+import ArtusTools.Tools.logger as logger
 log = logging.getLogger(__name__)
 
 import HarryPlotter.Plotting.analysisbase as analysisbase
