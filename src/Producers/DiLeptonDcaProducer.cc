@@ -1,4 +1,6 @@
 
+#include <Math/VectorUtil.h>
+
 #include "Artus/Consumer/interface/LambdaNtupleConsumer.h"
 
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/DiLeptonDcaProducer.h"
@@ -28,6 +30,12 @@ void DiLeptonDcaProducer::Init(setting_type const& settings)
 	LambdaNtupleConsumer<HttTypes>::AddFloatQuantity("diLepDca2DSigLog", [](event_type const& event, product_type const& product) {
 		return product.m_diLeptonDca2DSignificanceLog;
 	});
+	
+	// initialise corrector
+	if (settings.GetApplyDcaCorrection())
+	{
+		dcaCorrection.initialize(settings.GetDcaCorrectionFactorsData(), settings.GetDcaCorrectionFactorsMc());
+	}
 }
 
 void DiLeptonDcaProducer::Produce(event_type const& event, product_type& product,
@@ -49,5 +57,22 @@ void DiLeptonDcaProducer::Produce(event_type const& event, product_type& product
 		product.m_diLeptonDca2D = leptonPair->dca2D;
 		product.m_diLeptonDca2DError = leptonPair->dca2DError;
 		product.m_diLeptonDca2DSignificanceLog = std::log10(std::abs(product.m_diLeptonDca2D / product.m_diLeptonDca2DError));
+		
+		// DCA correction (in place)
+		if (settings.GetApplyDcaCorrection())
+		{
+			product.m_diLeptonDca3DSignificanceLog = dcaCorrection.DCAcorrected(
+					product.m_diLeptonDca3DSignificanceLog,
+					std::abs(product.m_flavourOrderedLeptons[0]->p4.Pt() + product.m_flavourOrderedLeptons[1]->p4.Pt()),
+					std::abs(product.m_flavourOrderedLeptons[0]->p4.Pt() - product.m_flavourOrderedLeptons[1]->p4.Pt()),
+					std::cos(ROOT::Math::VectorUtil::Angle(product.m_flavourOrderedLeptons[0]->p4, product.m_flavourOrderedLeptons[1]->p4))
+			);
+			product.m_diLeptonDca2DSignificanceLog = dcaCorrection.DCAcorrected(
+					product.m_diLeptonDca2DSignificanceLog,
+					std::abs(product.m_flavourOrderedLeptons[0]->p4.Pt() + product.m_flavourOrderedLeptons[1]->p4.Pt()),
+					std::abs(product.m_flavourOrderedLeptons[0]->p4.Pt() - product.m_flavourOrderedLeptons[1]->p4.Pt()),
+					std::cos(ROOT::Math::VectorUtil::Angle(product.m_flavourOrderedLeptons[0]->p4, product.m_flavourOrderedLeptons[1]->p4))
+			);
+		}
 	}
 }

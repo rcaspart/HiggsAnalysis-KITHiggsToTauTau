@@ -1,0 +1,10 @@
+{
+	"property" : [
+		"diLepDca3D",
+		"diLepDca3DError",
+		"diLepDca3DSigLog",
+		"diLepDca2D",
+		"diLepDca2DError",
+		"diLepDca2DSigLog"
+	]
+}

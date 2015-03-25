@@ -1,7 +1,9 @@
 
 #pragma once
 
-#include "../HttTypes.h"
+#include "HiggsAnalysis/KITHiggsToTauTau/interface/HttTypes.h"
+#include "HiggsAnalysis/KITHiggsToTauTau/interface/Utility/DCACorrection.h"
+
 
 /** Producer for di-lepton DCA (distance of closest approach) quantities and its corrections.
  */
@@ -20,5 +22,8 @@ public:
 
 	virtual void Produce(event_type const& event, product_type& product,
 	                     setting_type const& settings) const ARTUS_CPP11_OVERRIDE;
+
+private:
+	mutable DCACorrection dcaCorrection;
 };
 

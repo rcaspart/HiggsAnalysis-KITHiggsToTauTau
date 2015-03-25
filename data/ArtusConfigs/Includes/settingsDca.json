@@ -1,0 +1,5 @@
+{
+	"ApplyDcaCorrection" : true,
+	"DcaCorrectionFactorsData" : "$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/auxiliaries/mumu_legacy/Data_Dca_Summer13.root",
+	"DcaCorrectionFactorsMc" : "$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/auxiliaries/mumu_legacy/MC_Dca_Summer13.root"
+}

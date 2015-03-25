@@ -198,4 +198,9 @@ public:
 	IMPL_SETTING_STRINGLIST_DEFAULT(AntiTtbarTmvaInputQuantities, {});
 	IMPL_SETTING_STRINGLIST_DEFAULT(AntiTtbarTmvaMethods, {});
 	IMPL_SETTING_STRINGLIST_DEFAULT(AntiTtbarTmvaWeights, {});
+	
+	// DCA (correction) settings
+	IMPL_SETTING_DEFAULT(bool, ApplyDcaCorrection, false);
+	IMPL_SETTING(std::string, DcaCorrectionFactorsData);
+	IMPL_SETTING(std::string, DcaCorrectionFactorsMc);
 };
