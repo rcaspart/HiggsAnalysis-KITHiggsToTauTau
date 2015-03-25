@@ -67,6 +67,14 @@ public:
 	RMFLV m_diLeptonSystem;
 	RMFLV m_diLeptonPlusMetSystem;
 	
+	// filled by the DiLeptonDcaProducer
+	double m_diLeptonDca3D = DefaultValues::UndefinedDouble;
+	double m_diLeptonDca3DError = DefaultValues::UndefinedDouble;
+	double m_diLeptonDca3DSignificanceLog = DefaultValues::UndefinedDouble;
+	double m_diLeptonDca2D = DefaultValues::UndefinedDouble;
+	double m_diLeptonDca2DError = DefaultValues::UndefinedDouble;
+	double m_diLeptonDca2DSignificanceLog = DefaultValues::UndefinedDouble;
+	
 	// filled by the DiLeptonQuantitiesProducer (collinear approximation)
 	std::vector<RMFLV> m_flavourOrderedTauMomentaCA;
 	RMFLV m_diTauSystemCA;

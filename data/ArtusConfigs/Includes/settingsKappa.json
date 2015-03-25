@@ -28,6 +28,7 @@
 	"Muons" : "muons",
 	"Taus" : "taus",
 	"TauMetadata" : "taus",
+	"LeptonPairs" : "leptonPairs",
 	"TaggedJets" : "AK5PFTaggedJets",
 	"PileupDensity" : "KT6Area",
 	"Met" :  "met",

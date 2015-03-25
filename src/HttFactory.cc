@@ -14,6 +14,7 @@
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/EventCategoryProducer.h"
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/DataMcScaleFactorProducers.h"
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/DiLeptonQuantitiesProducer.h"
+#include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/DiLeptonDcaProducer.h"
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/DiJetQuantitiesProducer.h"
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/SvfitProducer.h"
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/Producers/TauTauRestFrameSelector.h"
@@ -92,6 +93,8 @@ ProducerBaseUntemplated * HttFactory::createProducer(std::string const& id)
 		return new TauSpinnerProducer();
 	if(id == DiLeptonQuantitiesProducer().GetProducerId())
 		return new DiLeptonQuantitiesProducer();
+	if(id == DiLeptonDcaProducer().GetProducerId())
+		return new DiLeptonDcaProducer();
 	if(id == DiJetQuantitiesProducer().GetProducerId())
 		return new DiJetQuantitiesProducer();
 	if(id == SvfitProducer().GetProducerId())
