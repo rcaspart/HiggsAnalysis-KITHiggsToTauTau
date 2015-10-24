@@ -35,13 +35,13 @@
 	"x_expressions": [
 		"RV"
 	],
-	"x_label" : "#mu_{qqH, WH, ZH}",
+	"x_label" : "#mu_{qqH, VH}",
 	"y_bins": [
 		"30,-2.0,4.0"
 	],
 	"y_expressions": [
 		"RF"
 	],
-	"y_label" : "#mu_{ggH, t#bar{t}H}",
+	"y_label" : "#mu_{ggH}",
 	"z_label" : "#minus2 #Delta ln L"
 }

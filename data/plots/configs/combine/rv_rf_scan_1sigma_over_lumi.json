@@ -39,7 +39,7 @@
 	"x_expressions": [
 		"RV"
 	],
-	"x_label" : "#mu_{qqH, WH, ZH}",
+	"x_label" : "#mu_{qqH, VH}",
 	"x_lines" : [
 		"1.0"
 	],
@@ -49,7 +49,7 @@
 	"y_expressions": [
 		"RF"
 	],
-	"y_label" : "#mu_{ggH, t#bar{t}H}",
+	"y_label" : "#mu_{ggH}",
 	"y_lines" : [
 		"1.0"
 	],
