@@ -98,7 +98,7 @@ class Datacards(object):
 			"CMS_$ANALYSIS_scale_met_$ERA",
 			"lnN",
 			ch.SystMap("era", "process")
-				(["13TeV"], ["ggH", "qqH", "WH", "ZH"], 0.98) # copied from 8TeV
+				(["13TeV"], ["ggH", "qqH", "WH", "ZH", "VH"], 0.98) # copied from 8TeV
 				(["13TeV"], ["ZTT", "ZLL", "TTJ", "VV", "WJ"], 1.03) # copied from 8TeV
 		]
 		
@@ -182,6 +182,7 @@ class Datacards(object):
 			ch.SystMap("era", "process")
 				(["13TeV"], ["ggH"], 1.079)
 				(["13TeV"], ["qqH"], 1.007)
+				(["13TeV"], ["VH"], 1.015)
 				(["13TeV"], ["WH"], 1.015)
 				(["13TeV"], ["ZH"], 1.038)
 		]
@@ -191,6 +192,7 @@ class Datacards(object):
 			ch.SystMap("era", "process")
 				(["13TeV"], ["ggH"], 1.071)
 				(["13TeV"], ["qqH"], 1.032)
+				(["13TeV"], ["VH"], 1.022)
 				(["13TeV"], ["WH"], 1.022)
 				(["13TeV"], ["ZH"], 1.022)
 		]
@@ -220,25 +222,25 @@ class Datacards(object):
 				
 				(["13TeV"], ["ggH"], ["tt_inclusive"], 1.025) # copied from 8TeV
 				
-				(["13TeV"], ["qqH", "WH", "ZH"], ["mt_0jet_high"], 1.028) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["mt_0jet_low"], 1.018) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["mt_1jet_high"], 0.954) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["mt_1jet_low"], 0.946) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["mt_2jet_vbf"], 0.893) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["mt_0jet_high"], 1.028) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["mt_0jet_low"], 1.018) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["mt_1jet_high"], 0.954) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["mt_1jet_low"], 0.946) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["mt_2jet_vbf"], 0.893) # copied from 8TeV
 				
-				(["13TeV"], ["qqH", "WH", "ZH"], ["et_0jet_high"], 1.028) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["et_0jet_low"], 1.018) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["et_1jet_high"], 0.954) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["et_1jet_low"], 0.946) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["et_2jet_vbf"], 0.893) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["et_0jet_high"], 1.028) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["et_0jet_low"], 1.018) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["et_1jet_high"], 0.954) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["et_1jet_low"], 0.946) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["et_2jet_vbf"], 0.893) # copied from 8TeV
 				
-				(["13TeV"], ["qqH", "WH", "ZH"], ["em_0jet_high"], 1.042) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["em_0jet_low"], 1.035) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["em_1jet_high"], 0.978) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["em_1jet_low"], 0.984) # copied from 8TeV
-				(["13TeV"], ["qqH", "WH", "ZH"], ["em_2jet_vbf"], 0.893) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["em_0jet_high"], 1.042) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["em_0jet_low"], 1.035) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["em_1jet_high"], 0.978) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["em_1jet_low"], 0.984) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["em_2jet_vbf"], 0.893) # copied from 8TeV
 				
-				(["13TeV"], ["qqH", "WH", "ZH"], ["tt_inclusive"], 1.025) # copied from 8TeV
+				(["13TeV"], ["qqH", "WH", "ZH", "VH"], ["tt_inclusive"], 1.025) # copied from 8TeV
 		]
 	
 	def add_processes(self, channel, categories, bkg_processes, sig_processes=["ztt"], *args, **kwargs):
@@ -502,6 +504,7 @@ class Datacards(object):
 							config["markers"] = ["LINE"] + (["HIST"]*len(bkg_processes)) + ["E2", "E"]
 							config["legend_markers"] = ["L"] + (["F"]*len(bkg_processes)) + ["F", "ELP"]
 							
+							config["y_lims"] = [0.0]
 							config["rel_y_lims"] = [0.0, 1.4]
 							config["legend"] = [0.23, 0.73, 0.9, 0.89]
 							config["legend_cols"] = 3
@@ -570,7 +573,7 @@ class Datacards(object):
 					config["nicks_blacklist"] = ["graph_b"]
 					config["fit_poi"] = plotting_args.get("fit_poi", "r")
 
-					config["left_pad_margin"] = [0.40]
+					config["left_pad_margin"] = 0.40
 					config["labels"] = ["prefit", "S+B model"]
 					config["markers"] = ["L2", "P"]
 					config["fill_styles"] = [3001, 0]
