@@ -60,7 +60,7 @@ if __name__ == "__main__":
 	                    help="Use Run1 samples. [Default: %(default)s]")
 	parser.add_argument("--cms", default=False, action="store_true",
 	                    help="CMS Preliminary lable. [Default: %(default)s]")
-	parser.add_argument("--lumi", type=float, default=0.07152,
+	parser.add_argument("--lumi", type=float, default=1.28,
 	                    help="Luminosity for the given data in fb^(-1). [Default: %(default)s]")
 	parser.add_argument("-w", "--weight", default="1.0",
 	                    help="Additional weight (cut) expression. [Default: %(default)s]")
@@ -184,7 +184,7 @@ if __name__ == "__main__":
 				elif args.shapes:
 					config["legend"] = [0.55, 0.65, 0.9, 0.88]
 				else:
-					config["rel_y_lims"] = [0.5, 10.0] if "--y-log" in args.args else [0.0, 1.5 if args.ratio else 1.4]
+					config["y_rel_lims"] = [0.5, 10.0] if "--y-log" in args.args else [0.0, 1.5 if args.ratio else 1.4]
 					config["legend"] = [0.23, 0.73, 0.9, 0.93] if args.ratio else [0.23, 0.73, 0.9, 0.89]
 					config["legend_cols"] = 3
 				if not args.shapes:
