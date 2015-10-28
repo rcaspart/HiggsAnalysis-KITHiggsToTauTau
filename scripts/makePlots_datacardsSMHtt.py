@@ -15,7 +15,7 @@ import Artus.Utility.tools as tools
 import Artus.HarryPlotter.utility.plotconfigs as plotconfigs
 
 import HiggsAnalysis.KITHiggsToTauTau.plotting.higgsplot as higgsplot
-import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.samples_run2 as samples
+import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.samples_run1 as samples
 import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.binnings as binnings
 import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.systematics_run2 as systematics
 import HiggsAnalysis.KITHiggsToTauTau.datacards.smhttdatacards as smhttdatacards
@@ -151,7 +151,8 @@ if __name__ == "__main__":
 							channel=channel,
 							category="catHtt13TeV_"+category,
 							weight=args.weight,
-							higgs_masses=higgs_masses
+							higgs_masses=higgs_masses,
+							ztt_from_mc=True
 					)
 					
 					systematics_settings = systematics_factory.get(shape_systematic)(config)

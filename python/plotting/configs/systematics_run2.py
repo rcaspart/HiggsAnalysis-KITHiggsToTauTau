@@ -48,9 +48,9 @@ class JecUncSystematic(SystematicShiftBase):
 		plot_config = super(JecUncSystematic, self).get_config(shift=shift)
 		
 		if shift > 0.0:
-			plot_config["folders"] = [folder.replace("jecUncNom", "jecUncUp") for folder in plot_config.get("folders", [])]
+			plot_config["folders"] = [folder.replace("jecUncNom", "jecUncUp").replace("tauEs/", "tauEsNom/") for folder in plot_config.get("folders", [])]
 		elif shift < 0.0:
-			plot_config["folders"] = [folder.replace("jecUncNom", "jecUncDown") for folder in plot_config.get("folders", [])]
+			plot_config["folders"] = [folder.replace("jecUncNom", "jecUncDown").replace("tauEs/", "tauEsNom/") for folder in plot_config.get("folders", [])]
 		
 		return plot_config
 

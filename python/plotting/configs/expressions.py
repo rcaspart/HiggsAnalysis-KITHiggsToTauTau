@@ -38,11 +38,11 @@ class ExpressionsDict(expressions.ExpressionsDict):
 			pt_var = "pt_2" if channel in ["mt", "et", "em"] else "pt_1"
 			pt_cut = "35.0" if channel in ["mt", "et", "tt"] else "35.0"
 			self.expressions_dict["catHtt13TeV_"+channel+"_inclusive"] = "(1.0)"
-			self.expressions_dict["catHtt13TeV_"+channel+"_2jet_inclusive"] = "(njetspt30>1)"
-			self.expressions_dict["catHtt13TeV_"+channel+"_2jet_vbf"] = self.expressions_dict["catHtt13TeV_"+channel+"_2jet_inclusive"]+"*(mjj>200.0)*(jdeta>2.0)"
+			self.expressions_dict["catHtt13TeV_"+channel+"_2jet_inclusive"] = "(nJets30>1)"
+			self.expressions_dict["catHtt13TeV_"+channel+"_2jet_vbf"] = self.expressions_dict["catHtt13TeV_"+channel+"_2jet_inclusive"]+"*(diJetMass>200.0)*(diJetAbsDeltaEta>2.0)"
 			self.expressions_dict["catHtt13TeV_"+channel+"_1jet_inclusive"] = ("(! ({vbf}))".format(
 					vbf=self.expressions_dict["catHtt13TeV_"+channel+"_2jet_vbf"]
-			))+"*(njetspt30>0)"
+			))+"*(nJets30>0)"
 			self.expressions_dict["catHtt13TeV_"+channel+"_1jet_high"] = self.expressions_dict["catHtt13TeV_"+channel+"_1jet_inclusive"]+("*({pt_var}>{pt_cut})".format(pt_var=pt_var, pt_cut=pt_cut))
 			self.expressions_dict["catHtt13TeV_"+channel+"_1jet_low"] = self.expressions_dict["catHtt13TeV_"+channel+"_1jet_inclusive"]+("*({pt_var}<={pt_cut})".format(pt_var=pt_var, pt_cut=pt_cut))
 			self.expressions_dict["catHtt13TeV_"+channel+"_0jet_inclusive"] = ("(! ({vbf}))*(! ({onejet}))".format(
