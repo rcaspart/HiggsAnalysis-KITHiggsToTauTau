@@ -1,12 +1,12 @@
 {
 	"AntiTtbarTmvaInputQuantities" : [
 		"emAntiTTbarMva_pzetavis:=pzetavis",
-		"emAntiTTbarMva_pzetavis:=pzetamiss",
-		"emAntiTTbarMva_pzetavis:=dphi",
-		"emAntiTTbarMva_pzetavis:=mvamet",
-		"emAntiTTbarMva_pzetavis:=mtll",
-		"emAntiTTbarMva_pzetavis:=csv",
-		"emAntiTTbarMva_pzetavis:=d01"
+		"emAntiTTbarMva_pzetamiss:=pzetamiss",
+		"emAntiTTbarMva_dphi:=dphi",
+		"emAntiTTbarMva_mvamet:=mvamet",
+		"emAntiTTbarMva_mtll:=mtll",
+		"emAntiTTbarMva_csv:=csv",
+		"emAntiTTbarMva_d01:=d01"
 	],
 	"AntiTtbarTmvaMethods" : [
 		"BDTG method"
