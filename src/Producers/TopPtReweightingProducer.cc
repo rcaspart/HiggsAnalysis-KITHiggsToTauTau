@@ -10,7 +10,7 @@ void TopPtReweightingProducer::Produce( KappaEvent const& event,
 			KappaProduct & product,
 			KappaSettings const& settings) const
 {
-    if (boost::regex_search(product.m_nickname, boost::regex("TT_RunIIFall15MiniAODv2", boost::regex::icase | boost::regex::extended)))
+    if (boost::regex_search(product.m_nickname, boost::regex("TT_", boost::regex::icase | boost::regex::extended)))
     {
         assert(event.m_genEventInfo != nullptr);
         std::vector<KGenParticle> tops;

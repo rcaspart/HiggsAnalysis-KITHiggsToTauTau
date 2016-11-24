@@ -269,7 +269,7 @@
 					"producer:EmuQcdWeightProducer",
 					"producer:EventWeightProducer"
 				],
-				"TT_RunIIFall15MiniAODv2" : [
+				"TT_" : [
 					"producer:HttValidLooseElectronsProducer",
 					"producer:HttValidLooseMuonsProducer",
 					"producer:HltProducer",
@@ -332,7 +332,7 @@
 					"producer:TaggedJetCorrectionsProducer",
 					"producer:ValidTaggedJetsProducer",
 					"producer:ValidBTaggedJetsProducer",
-					"producer:MetCorrector",
+					"#producer:MetCorrector",
 					"producer:MvaMetCorrector",
 					"producer:ZPtReweightProducer",
 					"filter:MinimalPlotlevelFilter",
@@ -372,7 +372,7 @@
 					"producer:TaggedJetCorrectionsProducer",
 					"producer:ValidTaggedJetsProducer",
 					"producer:ValidBTaggedJetsProducer",
-					"producer:MetCorrector",
+					"#producer:MetCorrector",
 					"producer:MvaMetCorrector",
 					"filter:MinimalPlotlevelFilter",
 					"producer:TauTauRestFrameSelector",

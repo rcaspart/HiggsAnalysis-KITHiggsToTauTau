@@ -211,6 +211,8 @@ public:
 	IMPL_SETTING_SORTED_STRINGLIST_DEFAULT(DiTauPairHltPathsWithoutCommonMatchRequired, {});
 	IMPL_SETTING_DEFAULT(bool, DiTauPairIsTauIsoMVA, false);
 	IMPL_SETTING_DEFAULT(bool, DiTauPairNoHLT, false);
+	IMPL_SETTING_DEFAULT(float, DiTauPairLeadingLowerPtCut, -1.0);
+	IMPL_SETTING_STRINGLIST_DEFAULT(MetFilters, {});
 
 	IMPL_SETTING(std::string, SvfitIntegrationMethod);
 	IMPL_SETTING_DEFAULT(std::string, SvfitCacheFile, "");
@@ -291,4 +293,5 @@ public:
 
 	// settings for the ScaleVariationProducer
 	IMPL_SETTING_STRINGLIST_DEFAULT(GenEventInfoMetadataNames, {});
+	IMPL_SETTING_DEFAULT(bool, RequireFirstTriggering, false);
 };

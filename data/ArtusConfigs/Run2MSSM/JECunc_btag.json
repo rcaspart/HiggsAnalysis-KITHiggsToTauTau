@@ -1,0 +1,99 @@
+{
+	"jecUncNom" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 0.0
+			}
+		},
+		"SvfitCacheFileFolder" : "jecUncNom"
+	},
+	"jecUncUp" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 1.0
+			}
+		},
+		"SvfitCacheFileFolder" : {
+		    "nick" : {
+		        "default" : "jecUncUp",
+		        "Run201" : "jecUncNom"
+            }
+        }
+	},
+	"jecUncDown" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : -1.0
+			}
+		},
+		"SvfitCacheFileFolder" : {
+		    "nick" : {
+		        "default" : "jecUncDown",
+		        "Run201" : "jecUncNom"
+            }
+        }
+	},
+	"jecUncNom_muUp" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 0.0
+			}
+		},
+		"SvfitCacheFileFolder" : "jecUncNom",
+		"MuonMomentumShift" : 1.01
+	},
+	"jecUncNom_muDown" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 0.0
+			}
+		},
+		"SvfitCacheFileFolder" : "jecUncNom",
+		"MuonMomentumShift" : 0.99
+	},
+	"jecUncNom_btagUp" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 0.0
+			}
+		},
+		"SvfitCacheFileFolder" : "jecUncNom",
+		"BTagShift" : 1.0
+	},
+	"jecUncNom_btagDown" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 0.0
+			}
+		},
+		"SvfitCacheFileFolder" : "jecUncNom",
+		"BTagShift" : -1.0
+	},
+	"jecUncNom_btagMissTagUp" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 0.0
+			}
+		},
+		"SvfitCacheFileFolder" : "jecUncNom",
+		"BMistagShift" : 1.0
+	},
+	"jecUncNom_btagMissTagDown" : {
+		"JetEnergyCorrectionUncertaintyShift" : {
+			"nick" : {
+				"Run201" : 0.0,
+				"default" : 0.0
+			}
+		},
+		"SvfitCacheFileFolder" : "jecUncNom",
+		"BMistagShift" : -1.0
+	}
+}

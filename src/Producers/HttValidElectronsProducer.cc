@@ -164,7 +164,26 @@ bool HttValidElectronsProducer::AdditionalCriteria(KElectron* electron,
 		}
 		else if (electronIDType == ElectronIDType::SPRING15CUTBASEDVETO)
 		{
-			validElectron = validElectron && IsCutBasedSpring15(&(*electron), event, WorkingPoint::VETO);
+            //validElectron = validElectron && IsCutBasedSpring15(&(*electron), event, WorkingPoint::VETO);
+            validElectron = validElectron &&
+                ( 
+                    (std::abs(electron->superclusterPosition.Eta()) <= DefaultValues::EtaBorderEB &&
+                    (electron->full5x5_sigmaIetaIeta < 0.0114) &&		//full5x5_sigmaIetaIeta
+                    ((std::abs(electron->dEtaIn) < 0.0152) &&		//abs(dEtaIn)
+                    (std::abs(electron->dPhiIn) < 0.216) &&		//abs(dPhiIn)
+                    (electron->hadronicOverEm < 0.181) &&		//hOverE
+                    (std::abs(1.0f/(electron->ecalEnergy) - 1.0f/(electron->ecalEnergy/electron->eSuperClusterOverP)) < 0.207) &&	//ooEmooP
+                    (electron->track.nInnerHits <= 2)))
+                    ||
+                    (std::abs(electron->superclusterPosition.Eta()) > DefaultValues::EtaBorderEB && 
+                    (electron->sigmaIetaIeta < 0.0352) &&		//full5x5_sigmaIetaIeta
+                    ((std::abs(electron->dEtaIn) < 0.0113) &&		//abs(dEtaIn)
+                    (std::abs(electron->dPhiIn) < 0.237) &&		//abs(dPhiIn)
+                    (electron->hadronicOverEm < 0.116) &&		//hOverE
+                    (std::abs(1.0f/(electron->ecalEnergy) - 1.0f/(electron->ecalEnergy/electron->eSuperClusterOverP)) < 0.174) &&	//ooEmooP
+                    (electron->track.nInnerHits <= 3))
+                    )
+                );
 		}
 		else if (electronIDType == ElectronIDType::MVANONTRIGSPRING15LOOSE)
 		{

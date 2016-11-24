@@ -22,9 +22,9 @@ void BTagEffConsumer::Init(setting_type const& settings)
 	m_BTaggingEff_Denom_b   = new TH2D("BTaggingEff_Denom_b", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
 	m_BTaggingEff_Denom_c   = new TH2D("BTaggingEff_Denom_c", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
 	m_BTaggingEff_Denom_udsg = new TH2D("BTaggingEff_Denom_udsg", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
-	m_BTaggingEff_Num_b  = new TH2D("bTaggingEff_Num_b", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
-	m_BTaggingEff_Num_c  = new TH2D("bTaggingEff_Num_c", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
-	m_BTaggingEff_Num_udsg  = new TH2D("bTaggingEff_Num_udsg", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
+	m_BTaggingEff_Num_b  = new TH2D("BTaggingEff_Num_b", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
+	m_BTaggingEff_Num_c  = new TH2D("BTaggingEff_Num_c", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
+	m_BTaggingEff_Num_udsg  = new TH2D("BTaggingEff_Num_udsg", ";p_{T} [GeV];#eta", ptNBins-1, ptBins, etaNBins-1, etaBins);
 }
 
 //void ValidBTaggedJetsProducer::Produce(KappaEvent const& event, KappaProduct& product,

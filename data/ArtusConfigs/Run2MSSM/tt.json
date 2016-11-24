@@ -38,9 +38,6 @@
 		"TauLowerPtCuts" : {
 			"nick" : {
 				"default" : [
-					"45.0"
-				],
-				"(Fall15MiniAODv2|Run2015D|Run2016|Spring16)" : [
 					"40.0"
 				]
 			}
@@ -58,6 +55,19 @@
 		},
 		"EventWeight" : "eventWeight",
 		"RooWorkspace" : "$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/root/scaleFactorWeights/htt_scalefactors.root",
+		"RooWorkspaceWeightNames" : [
+			"0:tauidWeight",
+			"1:tauidWeight"
+		],
+		"RooWorkspaceObjectNames" : [
+			"0:t_iso_mva_t_pt40_eta2p1_sf",
+			"1:t_iso_mva_t_pt40_eta2p1_sf"
+
+		],
+		"RooWorkspaceObjectArguments" : [
+		    "0:t_dm,t_eta,t_pt",
+		    "1:t_dm,t_eta,t_pt"
+		],
 		"TauTauRestFrameReco" : "collinear_approximation",
 		"TauTriggerFilterNames" : {
 			"nick" : {
@@ -95,7 +105,9 @@
 			"nmediumbtag",
 			"ntightbtag",
 			"had_gen_match_pT_1",
-			"had_gen_match_pT_2"
+			"had_gen_match_pT_2",
+			"tauidWeight_1",
+			"tauidWeight_2"
 		],
 		"OSChargeLeptons" : true,
 		"Processors" : {
@@ -126,11 +138,14 @@
 					"producer:TauTauRestFrameSelector",
 					"producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
+					"producer:SimpleEleTauFakeRateWeightProducer",
+					"producer:SimpleMuTauFakeRateWeightProducer",
 					"producer:EventCategoryProducer",
+					"producer:RooWorkspaceWeightProducer",
 					"producer:TauTauTriggerScaleFactorProducer",
 					"producer:EventWeightProducer"
 				],
-				"TT_RunIIFall15MiniAODv2" : [
+				"TT_" : [
 					"producer:HttValidLooseElectronsProducer",
 					"producer:HttValidLooseMuonsProducer",
 					"producer:HltProducer",
@@ -157,7 +172,10 @@
 					"producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
 					"producer:TopPtReweightingProducer",
+					"producer:SimpleEleTauFakeRateWeightProducer",
+					"producer:SimpleMuTauFakeRateWeightProducer",
 					"producer:EventCategoryProducer",
+					"producer:RooWorkspaceWeightProducer",
 					"producer:TauTauTriggerScaleFactorProducer",
 					"producer:EventWeightProducer"
 				],
@@ -185,13 +203,16 @@
 					"producer:ValidTaggedJetsProducer",
 					"producer:ValidBTaggedJetsProducer",
 					"#producer:MetCorrector",
-					"#producer:MvaMetCorrector",
+					"producer:MvaMetCorrector",
 					"producer:ZPtReweightProducer",
 					"filter:MinimalPlotlevelFilter",
 					"producer:TauTauRestFrameSelector",
 					"producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
+					"producer:SimpleEleTauFakeRateWeightProducer",
+					"producer:SimpleMuTauFakeRateWeightProducer",
 					"producer:EventCategoryProducer",
+					"producer:RooWorkspaceWeightProducer",
 					"producer:TauTauTriggerScaleFactorProducer",
 					"producer:EventWeightProducer"
 				],
@@ -219,12 +240,15 @@
 					"producer:ValidTaggedJetsProducer",
 					"producer:ValidBTaggedJetsProducer",
 					"#producer:MetCorrector",
-					"#producer:MvaMetCorrector",
+					"producer:MvaMetCorrector",
 					"filter:MinimalPlotlevelFilter",
 					"producer:TauTauRestFrameSelector",
 					"producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
+					"producer:SimpleEleTauFakeRateWeightProducer",
+					"producer:SimpleMuTauFakeRateWeightProducer",
 					"producer:EventCategoryProducer",
+					"producer:RooWorkspaceWeightProducer",
 					"producer:TauTauTriggerScaleFactorProducer",
 					"producer:EventWeightProducer"
 				],
@@ -251,6 +275,8 @@
 					"producer:TauTauRestFrameSelector",
 					"producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
+					"producer:SimpleEleTauFakeRateWeightProducer",
+					"producer:SimpleMuTauFakeRateWeightProducer",
 					"producer:EventCategoryProducer",
 					"producer:EventWeightProducer"
 				]

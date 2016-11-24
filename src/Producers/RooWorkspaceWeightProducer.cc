@@ -18,15 +18,16 @@ void RooWorkspaceWeightProducer::Produce( event_type const& event, product_type 
         for(size_t index = 0; index < weightNames.second.size(); index++)
         {
             auto args = std::vector<double>{};
+            bool validInput = true;
             std::vector<std::string> arguments;
             boost::split(arguments,  m_functorArgs.at(weightNames.first).at(index) , boost::is_any_of(","));
             for(auto arg:arguments)
             {
-                if(arg=="m_pt" || arg=="e_pt")
+                if(arg=="m_pt" || arg=="e_pt" || arg=="t_pt")
                 {
                     args.push_back(lepton->p4.Pt());
                 }
-                if(arg=="m_eta")
+                if(arg=="m_eta" || arg=="t_eta")
                 {
                     args.push_back(lepton->p4.Eta());
                 }
@@ -39,8 +40,34 @@ void RooWorkspaceWeightProducer::Produce( event_type const& event, product_type 
                 {
                     args.push_back(SafeMap::GetWithDefault(product.m_leptonIsolationOverPt, lepton, std::numeric_limits<double>::max()));
                 }
+                if(arg=="t_dm")
+                {
+                    KGenParticle* genParticle = product.m_flavourOrderedGenLeptons.at(weightNames.first);
+                    if (genParticle)
+                    {
+                        if (GeneratorInfo::GetGenMatchingCode(genParticle) == HttEnumTypes::GenMatchingCode::IS_TAU_HAD_DECAY)
+                        {
+                            KTau* tau = static_cast<KTau*>(lepton);
+                            args.push_back(tau->decayMode);
+                        }
+                        else
+                        {
+                            validInput = false;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        validInput = false;
+                        break;
+                    }
+                }
+
             }
-            product.m_weights[weightNames.second.at(index)+"_"+std::to_string(weightNames.first+1)] = m_functors.at(weightNames.first).at(index)->eval(args.data());
+            if(validInput)
+            {
+                product.m_weights[weightNames.second.at(index)+"_"+std::to_string(weightNames.first+1)] = m_functors.at(weightNames.first).at(index)->eval(args.data());
+            }
         }
     }
     if((product.m_weights.find("idweight_1") != product.m_weights.end()) && (product.m_weights.find("isoweight_1") != product.m_weights.end()))

@@ -173,6 +173,7 @@
 		"decayMode_1",
 		"decayMode_2",
 		"npartons",
-		"genbosonmass"
+		"genbosonmass",
+		"nJets20Eta24"
 	]
 }

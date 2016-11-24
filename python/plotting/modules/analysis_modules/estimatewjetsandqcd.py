@@ -63,12 +63,22 @@ class EstimateWjetsAndQCD(estimatebase.EstimateBase):
 				help="Nicks for ss highmt data histogram. [Default: %(default)s]")
 		self.estimate_wjets_and_qcd_options.add_argument("--wjets-os-data-nicks", nargs="+", default=[""],
 				help="Nicks for os highmt data histogram. [Default: %(default)s]")
+		self.estimate_wjets_and_qcd_options.add_argument("--wjets-os-highmt-cr-nicks", nargs="+", default=[""],
+				help="Nicks for os highmt wj histogram. [Default: %(default)s]")
+		self.estimate_wjets_and_qcd_options.add_argument("--wjets-ss-highmt-cr-nicks", nargs="+", default=[""],
+				help="Nicks for ss highmt wj histogram. [Default: %(default)s]")
 		self.estimate_wjets_and_qcd_options.add_argument("--wjets-shape-nicks", nargs="+", default=[""],
 				help="Nicks for W+jets signal region histogram. [Default: %(default)s]")
+		self.estimate_wjets_and_qcd_options.add_argument("--wjets-njet-nicks", nargs="+", default=[""],
+				help="Nicks for W+jets njet region histogram. [Default: %(default)s]")
+		self.estimate_wjets_and_qcd_options.add_argument("--wjets-nbtag-nicks", nargs="+", default=[""],
+				help="Nicks for W+jets nbtag region histogram. [Default: %(default)s]")
+		self.estimate_wjets_and_qcd_options.add_argument("--wjets-from-mc", nargs="+", type="bool", default=[False],
+				help="Estimate WJets from MC samples. [Default: %(default)s]")
 
 	def prepare_args(self, parser, plotData):
 		super(EstimateWjetsAndQCD, self).prepare_args(parser, plotData)
-		self._plotdict_keys = ["qcd_extrapolation_factors_ss_os", "qcd_shape_nicks", "qcd_ss_lowmt_nicks", "qcd_ss_highmt_shape_nicks", "qcd_os_highmt_nicks", "qcd_shape_highmt_substract_nicks", "qcd_yield_nicks", "qcd_shape_substract_nicks", "qcd_yield_substract_nicks", "wjets_ss_mc_nicks", "wjets_os_mc_nicks", "wjets_os_highmt_mc_nicks", "wjets_os_lowmt_mc_nicks", "wjets_ss_highmt_mc_nicks", "wjets_ss_substract_nicks", "wjets_ss_data_nicks", "wjets_os_substract_nicks", "wjets_os_data_nicks", "wjets_shape_nicks"]
+		self._plotdict_keys = ["qcd_extrapolation_factors_ss_os", "qcd_shape_nicks", "qcd_ss_lowmt_nicks", "qcd_ss_highmt_shape_nicks", "qcd_os_highmt_nicks", "qcd_shape_highmt_substract_nicks", "qcd_yield_nicks", "qcd_shape_substract_nicks", "qcd_yield_substract_nicks", "wjets_ss_mc_nicks", "wjets_os_mc_nicks", "wjets_os_highmt_mc_nicks", "wjets_os_lowmt_mc_nicks", "wjets_ss_highmt_mc_nicks", "wjets_ss_substract_nicks", "wjets_ss_data_nicks", "wjets_os_substract_nicks", "wjets_os_data_nicks", "wjets_shape_nicks", "wjets_njet_nicks", "wjets_nbtag_nicks", "wjets_os_highmt_cr_nicks", "wjets_ss_highmt_cr_nicks","wjets_from_mc"]
 		self.prepare_list_args(plotData, self._plotdict_keys)
 		for index in ["qcd_shape_substract_nicks", "qcd_yield_substract_nicks", "wjets_ss_substract_nicks", "wjets_os_substract_nicks","qcd_shape_highmt_substract_nicks"]:
 			plotData.plotdict[index] = [nicks.split() for nicks in plotData.plotdict[index]]
@@ -84,13 +94,97 @@ class EstimateWjetsAndQCD(estimatebase.EstimateBase):
 	def run(self, plotData=None):
 		super(EstimateWjetsAndQCD, self).run(plotData)
 
-		for qcd_extrapolation_factor_ss_os, qcd_shape_nick, qcd_ss_lowmt_nick, qcd_ss_highmt_shape_nick, qcd_os_highmt_nick, qcd_shape_highmt_substract_nick, qcd_yield_nick, qcd_shape_substract_nick, qcd_yield_substract_nick, wjets_ss_mc_nick, wjets_os_mc_nick, wjets_os_highmt_mc_nick, wjets_os_lowmt_mc_nick, wjets_ss_highmt_mc_nick, wjets_ss_substract_nick, wjets_ss_data_nick, wjets_os_substract_nick, wjets_os_data_nick, wjets_shape_nick in zip(*[plotData.plotdict[key] for key in self._plotdict_keys]):
+		for qcd_extrapolation_factor_ss_os, qcd_shape_nick, qcd_ss_lowmt_nick, qcd_ss_highmt_shape_nick, qcd_os_highmt_nick, qcd_shape_highmt_substract_nick, qcd_yield_nick, qcd_shape_substract_nick, qcd_yield_substract_nick, wjets_ss_mc_nick, wjets_os_mc_nick, wjets_os_highmt_mc_nick, wjets_os_lowmt_mc_nick, wjets_ss_highmt_mc_nick, wjets_ss_substract_nick, wjets_ss_data_nick, wjets_os_substract_nick, wjets_os_data_nick, wjets_shape_nick, wjets_njet_nick, wjets_nbtag_nick, wjets_os_highmt_cr_nick, wjets_ss_highmt_cr_nick, wjets_from_mc in zip(*[plotData.plotdict[key] for key in self._plotdict_keys]):
+		        # derive the Njet->Nbtag extrapolation factor; should be 1 for nobtag and inclusive
+			yield_njet = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_njet_nick])()
+			yield_nbtag = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_nbtag_nick])()
+                        if yield_njet != 0.0:
+                            btag_extrapolation = yield_nbtag/yield_njet
+                        print "njet ", yield_njet #,plotData.plotdict["weights"][wjets_njet_nick]
+                        print "nbtag ", yield_nbtag #, plotData.plotdict["weights"][wjets_nbtag_nick]
+                        print "ratio ", btag_extrapolation
+
+			# estimate W+jets
+			print "yield ss"
+			yield_ss_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_data_nick])()
+			print "inital ", yield_ss_control
+			for nick in wjets_ss_substract_nick:
+				yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
+				print nick, yield_bkg_control
+				yield_ss_control -= yield_bkg_control
+			print "yield ss ", yield_ss_control
+			print "yield os"
+			yield_os_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_data_nick])()
+			print "inital ", yield_os_control
+			for nick in wjets_os_substract_nick:
+				yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
+				print nick, yield_bkg_control
+				yield_os_control -= yield_bkg_control
+			print "yield os ", yield_os_control
+
+                        if not wjets_from_mc:
+                            wjets_extrapolation_factor_ss_os = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_mc_nick])()
+                            print "wjets os ss ", wjets_extrapolation_factor_ss_os #, plotData.plotdict["weights"][wjets_os_mc_nick], plotData.plotdict["weights"][wjets_ss_mc_nick]
+                            wjets_extrapolation_factor_mt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
+                            print "wjets mt ", wjets_extrapolation_factor_mt #, plotData.plotdict["weights"][wjets_os_lowmt_mc_nick], plotData.plotdict["weights"][wjets_os_highmt_mc_nick]
+
+                            wjets_yield = (yield_os_control-qcd_extrapolation_factor_ss_os*yield_ss_control)*wjets_extrapolation_factor_ss_os/(wjets_extrapolation_factor_ss_os-qcd_extrapolation_factor_ss_os)*wjets_extrapolation_factor_mt
+                            print "wjets yield", wjets_yield
+
+                            # scale signal region histograms
+                            integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_shape_nick])()
+                            if integral_shape != 0.0:
+                                    scale_factor = wjets_yield / integral_shape
+                                    log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_shape_nick, scale_factor=scale_factor))
+                                    plotData.plotdict["root_objects"][wjets_shape_nick].Scale(scale_factor.nominal_value)
+                                    print "before btag", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_shape_nick])()
+                            log.debug("Njet->nbtag extrapolation factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_shape_nick, scale_factor=btag_extrapolation))
+                            plotData.plotdict["root_objects"][wjets_shape_nick].Scale(btag_extrapolation.nominal_value)
+                            print "final", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_shape_nick])()
+
+                            if "wj_ss_lowmt" in plotData.plotdict["root_objects"]:
+                                integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"]["wj_ss_lowmt"])()
+                            else:
+                                integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"]["noplot_wj_ss_lowmt"])()
+                            if integral_shape != 0.0:
+                                    scale_factor = wjets_yield / (integral_shape * wjets_extrapolation_factor_ss_os)*btag_extrapolation
+                            	    if "wj_ss_lowmt" in plotData.plotdict["root_objects"]:
+                                    	plotData.plotdict["root_objects"]["wj_ss_lowmt"].Scale(scale_factor.nominal_value)
+                            	    else:
+                                        plotData.plotdict["root_objects"]["noplot_wj_ss_lowmt"].Scale(scale_factor.nominal_value)
+
+                            integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
+                            if integral_shape != 0.0:
+                                    scale_factor = wjets_yield / (integral_shape * wjets_extrapolation_factor_mt)
+                                    log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_os_highmt_mc_nick, scale_factor=scale_factor))
+                                    plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick].Scale(scale_factor.nominal_value)
+
+                            integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick])()
+                            if integral_shape != 0.0:
+                                    scale_factor = wjets_yield / (integral_shape * wjets_extrapolation_factor_mt * wjets_extrapolation_factor_ss_os)
+                                    log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_ss_highmt_mc_nick, scale_factor=scale_factor))
+                                    plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick].Scale(scale_factor.nominal_value)
+
+                            integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_cr_nick])()
+                            if integral_shape != 0.0:
+                                    scale_factor = wjets_yield / (integral_shape * wjets_extrapolation_factor_mt)*btag_extrapolation
+                                    log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_os_highmt_cr_nick, scale_factor=scale_factor))
+                    		    plotData.plotdict["root_objects"][wjets_os_highmt_cr_nick].Scale(scale_factor.nominal_value)
+
+                            integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_highmt_cr_nick])()
+                            if integral_shape != 0.0:
+                                    scale_factor = wjets_yield / (integral_shape * wjets_extrapolation_factor_mt * wjets_extrapolation_factor_ss_os)*btag_extrapolation
+                                    log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_ss_highmt_cr_nick, scale_factor=scale_factor))
+                    		    plotData.plotdict["root_objects"][wjets_ss_highmt_cr_nick].Scale(scale_factor.nominal_value)
+
 			# estimate QCD for the lowmT
 			for nick in qcd_shape_substract_nick:
 				plotData.plotdict["root_objects"][qcd_shape_nick].Add(plotData.plotdict["root_objects"][nick], -1)
+			print "qcd yield ", qcd_yield_nick
 			yield_qcd_control = tools.PoissonYield(plotData.plotdict["root_objects"][qcd_yield_nick])()
 			for nick in qcd_yield_substract_nick:
 				yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
+				print nick, yield_bkg_control
 				if nick in plotData.metadata:
 					yield_bkg_control = uncertainties.ufloat(
 							plotData.metadata[nick].get("yield", yield_bkg_control.nominal_value),
@@ -98,6 +192,7 @@ class EstimateWjetsAndQCD(estimatebase.EstimateBase):
 					)
 				yield_qcd_control -= yield_bkg_control
 			yield_qcd_control = max(0.0, yield_qcd_control)
+			print "yield qcd control", yield_qcd_control
 
 			integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][qcd_shape_nick])()
 			if integral_shape != 0.0:
@@ -109,54 +204,19 @@ class EstimateWjetsAndQCD(estimatebase.EstimateBase):
 				scale_factor = yield_qcd_control / integral_shape
                                 plotData.plotdict["root_objects"][qcd_ss_lowmt_nick].Scale(scale_factor.nominal_value)
 
-			# estimate W+jets
-			yield_ss_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_data_nick])()
-			for nick in wjets_ss_substract_nick:
-				yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
-				yield_ss_control -= yield_bkg_control
-			yield_os_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_data_nick])()
-			for nick in wjets_os_substract_nick:
-				yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
-				yield_os_control -= yield_bkg_control
-
-			wjets_extrapolation_factor_ss_os = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_mc_nick])()
-			wjets_extrapolation_factor_mt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
-
-			wjets_yield = (yield_os_control-qcd_extrapolation_factor_ss_os*yield_ss_control)*wjets_extrapolation_factor_ss_os/(wjets_extrapolation_factor_ss_os-qcd_extrapolation_factor_ss_os)*wjets_extrapolation_factor_mt
-
-			# scale signal region histograms
-			integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_shape_nick])()
-			if integral_shape != 0.0:
-				scale_factor = wjets_yield / integral_shape
-				log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_shape_nick, scale_factor=scale_factor))
-				plotData.plotdict["root_objects"][wjets_shape_nick].Scale(scale_factor.nominal_value)
-
-			integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
-			if integral_shape != 0.0:
-				scale_factor = wjets_yield / (integral_shape * wjets_extrapolation_factor_mt)
-				log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_os_highmt_mc_nick, scale_factor=scale_factor))
-				plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick].Scale(scale_factor.nominal_value)
-
-			integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick])()
-			if integral_shape != 0.0:
-				scale_factor = wjets_yield / (integral_shape * wjets_extrapolation_factor_mt * wjets_extrapolation_factor_ss_os)
-				log.debug("Scale factor for process W+jets (nick \"{nick}\") is {scale_factor}.".format(nick=wjets_ss_highmt_mc_nick, scale_factor=scale_factor))
-				plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick].Scale(scale_factor.nominal_value)
-
-
                         # estimate QCD for the highmT region
-			for nick in qcd_shape_highmt_substract_nick+[wjets_ss_highmt_mc_nick]:
-				plotData.plotdict["root_objects"][qcd_ss_highmt_shape_nick].Add(plotData.plotdict["root_objects"][nick], -1)
+                        for nick in qcd_shape_highmt_substract_nick+[wjets_ss_highmt_mc_nick]:
+                                plotData.plotdict["root_objects"][qcd_ss_highmt_shape_nick].Add(plotData.plotdict["root_objects"][nick], -1)
 
 			yield_qcd_ss_highmt = yield_ss_control - tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick])()
 			yield_qcd_ss_highmt = max(0.0, yield_qcd_ss_highmt)
 
 			integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][qcd_ss_highmt_shape_nick])()
 			if integral_shape != 0.0:
-				scale_factor = yield_qcd_ss_highmt / integral_shape
+				scale_factor = yield_qcd_ss_highmt / integral_shape*btag_extrapolation
 				plotData.plotdict["root_objects"][qcd_ss_highmt_shape_nick].Scale(scale_factor.nominal_value)
 
 			integral_shape = tools.PoissonYield(plotData.plotdict["root_objects"][qcd_os_highmt_nick])()
 			if integral_shape != 0.0:
-				scale_factor = yield_qcd_ss_highmt * qcd_extrapolation_factor_ss_os / integral_shape
+				scale_factor = yield_qcd_ss_highmt * qcd_extrapolation_factor_ss_os / integral_shape*btag_extrapolation
                                 plotData.plotdict["root_objects"][qcd_os_highmt_nick].Scale(scale_factor.nominal_value)

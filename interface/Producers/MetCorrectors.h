@@ -107,7 +107,8 @@ public:
 		
 		float correctedMetX, correctedMetY;
 		
-		m_recoilCorrector->CorrectByMeanResolution(
+		//m_recoilCorrector->CorrectByMeanResolution(
+		m_recoilCorrector->Correct(
 			metX,
 			metY,
 			genPx,

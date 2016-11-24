@@ -9,6 +9,8 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string.hpp>
 #include "HiggsAnalysis/KITHiggsToTauTau/interface/HttTypes.h"
+#include "HiggsAnalysis/KITHiggsToTauTau/interface/Utility/GeneratorInfo.h"
+#include "HiggsAnalysis/KITHiggsToTauTau/interface/HttEnumTypes.h"
 
 /**
    \brief EmuQcdWeightProducer

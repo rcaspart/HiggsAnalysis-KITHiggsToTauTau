@@ -293,7 +293,7 @@ if __name__ == "__main__":
 						higgs_masses=args.higgs_masses,
 						normalise_signal_to_one_pb=False,
 						ztt_from_mc=args.ztt_from_mc,
-						weight="({0})*({1})".format(json_config.pop("weights", ["1.0"])[0], args.weight),
+						weight="({0})*({1}){2}".format(json_config.pop("weights", ["1.0"])[0], args.weight, additional_weight),
 						lumi = args.lumi * 1000,
 						exclude_cuts=args.exclude_cuts+json_config.pop("exclude_cuts", []),
 						blind_expression=channel+"_"+quantity,
@@ -327,7 +327,7 @@ if __name__ == "__main__":
 
 				config["x_label"] = json_config.pop("x_label", channel+"_"+quantity)
 
-				config["title"] = "channel_"+channel
+				config["title"] = "channel_"+channel+("_"+category) if category else ""
 
 				config["directories"] = [args.input_dir]
 
@@ -465,8 +465,8 @@ if __name__ == "__main__":
 
 				config["output_dir"] = os.path.expandvars(os.path.join(
 						args.output_dir,
-						channel if len(args.channels) > 1 else "",
-						category if len(args.categories) > 1 else ""
+						channel if len(args.channels) > 0 else "",
+						category if len(args.categories) > 0 else ""
 				))
 				
 				if "qcd" in bkg_samples:

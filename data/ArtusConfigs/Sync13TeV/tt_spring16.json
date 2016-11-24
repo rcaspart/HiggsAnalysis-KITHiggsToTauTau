@@ -7,7 +7,6 @@
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsMuonID.json",
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsTauID.json",
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsJetID.json",
-			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsSvfit.json",
 			"$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/ArtusConfigs/Sync13TeV/Includes/settingsBTaggedJetID.json"
 		],
 		"Channel" : "TT",
@@ -26,17 +25,15 @@
 			"2.1"
 		],
 		"DiTauPairMinDeltaRCut" : 0.5,
+		"RooWorkspace" : "$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/root/scaleFactorWeights/htt_scalefactors.root",
 		"DiTauPairIsTauIsoMVA": true,
 		"DiTauPairNoHLT" : true,
 		"EventWeight" : "eventWeight",
 		"TauTauRestFrameReco" : "collinear_approximation",
 		"TauTriggerFilterNames" : [
-			"HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg_v:hltDoublePFTau35TrackPt1MediumIsolationDz02Reg",
-			"HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg_v:l1extratauccolltection"
-
+			"HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg_v:hltDoublePFTau35TrackPt1MediumIsolationDz02Reg"
 		],
 		"TriggerObjectLowerPtCut" : 28.0,
-		"SvfitIntegrationMethod" : "MarkovChain",
 		"InvalidateNonMatchingElectrons" : false,
 		"InvalidateNonMatchingMuons" : false,
 		"InvalidateNonMatchingTaus" : true,
@@ -79,24 +76,20 @@
 					"producer:MvaMetSelector",
 					"#producer:TaggedJetCorrectionsProducer",
 					"producer:ValidTaggedJetsProducer",
-					"#producer:RecoJetGenParticleMatchingProducer",
 					"producer:ValidBTaggedJetsProducer",
-					"producer:MetCorrector",
-					"producer:MvaMetCorrector",
-					"producer:SvfitProducer",
+					"#producer:MetCorrector",
+					"#producer:MvaMetCorrector",
 					"producer:TauTauRestFrameSelector",
 					"producer:DiLeptonQuantitiesProducer",
 					"producer:DiJetQuantitiesProducer",
 					"producer:EventCategoryProducer",
-					"producer:GenTauDecayProducer",
-					"producer:GenTauDecayModeProducer",
+					"producer:TauTauTriggerScaleFactorProducer",
 					"#producer:EventWeightProducer"
 				]
 			}
 		},
 		"Consumers" : [
 			"KappaLambdaNtupleConsumer",
-			"SvfitCacheConsumer",
 			"cutflow_histogram"
 		]
 	}

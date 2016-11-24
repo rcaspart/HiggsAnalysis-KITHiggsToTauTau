@@ -51,10 +51,12 @@ class LabelsDict(labels.LabelsDict):
 			self.labels_dict["channel_mt_btag"] = "#mu#tau_{h}, b-tag"
 			self.labels_dict["channel_et_btag"] = "e#tau_{h}, b-tag"
 			self.labels_dict["channel_em_btag"] = "e#mu, b-tag"
+			self.labels_dict["channel_mm_btag"] = "#mu#mu, b-tag"
 			self.labels_dict["channel_tt_nobtag"] = "#tau_{h}#tau_{h}, no b-tag"
 			self.labels_dict["channel_mt_nobtag"] = "#mu#tau_{h}, no b-tag"
 			self.labels_dict["channel_et_nobtag"] = "e#tau_{h}, no b-tag"
 			self.labels_dict["channel_em_nobtag"] = "e#mu, no b-tag"
+			self.labels_dict["channel_mm_nobtag"] = "#mu#mu, no b-tag"
 
 			self.labels_dict["channel_tt_large"] = "#scale[1.5]{#tau_{h}#tau_{h}}"
 			self.labels_dict["channel_mt_large"] = "#scale[1.5]{#mu#tau_{h}}"

@@ -30,7 +30,7 @@ public:
         TDirectory *savedir(gDirectory);
         TFile *savefile(gFile);
         TString cmsswBase = TString( getenv ("CMSSW_BASE") );
-        TFile * zPtFile = new TFile(cmsswBase+"/src/HiggsAnalysis/KITHiggsToTauTau/data/root/zpt/zpt_weights.root");
+        TFile * zPtFile = new TFile(cmsswBase+"/src/HiggsAnalysis/KITHiggsToTauTau/data/root/zpt/zpt_weights_2016.root");
         m_zPtHist = (TH2D*)zPtFile->Get("zptmass_histo");
         gDirectory = savedir;
         gFile = savefile;

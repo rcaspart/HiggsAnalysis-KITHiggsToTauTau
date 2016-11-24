@@ -11,7 +11,7 @@
 		"loose:0.460"
 	],
 	"BTaggedJetAbsEtaCut" : 2.4,
-	"ApplyBTagSF" : false,
+	"ApplyBTagSF" : true,
 	"BTagSFMethod" : "PromotionDemotion",
 	"BTagShift" : 0,
 	"BMistagShift" : 0,
