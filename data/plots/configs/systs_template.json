@@ -1,0 +1,86 @@
+{
+    "analysis_modules": [
+        "SystematicalShiftInfos", 
+        "NormalizeByBinWidth", 
+        "Ratio"
+    ], 
+    "colors": [
+        "kBlack", 
+        "kRed+2", 
+        "kBlue-3", 
+        "kGray",
+        "kRed+2"
+        "kBlue-3", 
+    ], 
+    "filename": "template", 
+    "labels": [
+        "Nominal", 
+        "Down", 
+        "Up", 
+        "Nominal", 
+        "Down", 
+        "Up"
+    ], 
+    "legend": "upper center", 
+    "legend_cols": 3, 
+    "line_styles": [
+        "-", 
+        "-", 
+        "-", 
+        "--", 
+        "-", 
+        "-"
+    ], 
+    "markers": [
+        "", 
+        "", 
+        ""
+    ], 
+    "nicks": [
+        "nominal", 
+        "down", 
+        "up"
+    ], 
+    "ratio_denominator_nicks": [
+        "nominal"
+    ], 
+    "ratio_numerator_nicks": [
+	"nominal",
+        "down", 
+        "up"
+    ], 
+    "step": [
+        true
+    ], 
+    "texts_size": [
+        18.0
+    ], 
+    "texts_x": [
+        0.55
+    ], 
+    "texts_y": [
+        0.85, 
+        0.75, 
+        0.65
+    ], 
+    "title": "e#tau_{h}", 
+    "x_errors": [
+        false
+    ], 
+    "x_expressions": [
+        "ZTT", 
+        "ZTT_CMS_scale_e_13TeVDown", 
+        "ZTT_CMS_scale_e_13TeVUp"
+    ], 
+    "x_label": "Total Transverse Mass m^{tot}_{T} / GeV", 
+    "y_errors": [
+        true, false, false
+    ], 
+    "format" : ["png", "pdf"],
+    "y_label": "dN/dm^{tot}_{T} (1 / GeV)", 
+    "y_subplot_label": "shift / nominal", 
+    "y_subplot_lims": [
+        0.5, 
+        1.5
+    ]
+}
