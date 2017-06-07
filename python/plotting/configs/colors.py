@@ -124,7 +124,7 @@ class ColorsDict(colors.ColorsDict):
 			self.colors_dict["hww_qq125"] = self.colors_dict["hww"]
 			self.colors_dict["hww_qq130"] = self.colors_dict["hww"]
 			self.colors_dict["totalbkg"] = "#000000"
-			self.colors_dict["ff"] = self.colors_dict["kit_grau_2"]
+			self.colors_dict["ff"] = "#000000 #C0E864"
 
 			self.colors_dict["channel_tt"] = self.colors_dict["kit_blau_1"]
 			self.colors_dict["channel_mt"] = self.colors_dict["kit_rot_1"]
