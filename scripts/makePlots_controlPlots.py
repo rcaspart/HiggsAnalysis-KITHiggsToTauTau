@@ -372,17 +372,17 @@ if __name__ == "__main__":
 					if last_loop:
 						config = channel_config
 				if category == "nobtag" and channel == "mt":
-					config["qcd_extrapolation_factors_ss_os"] = 1.14
+					config["qcd_extrapolation_factors_ss_os"] = 1.10
 				elif category == "btag" and channel == "mt":
-					config["qcd_extrapolation_factors_ss_os"] = 1.01
+					config["qcd_extrapolation_factors_ss_os"] = 1.05
 				elif category == "inclusive" and channel == "mt":
-					config["qcd_extrapolation_factors_ss_os"] = 1.12
+					config["qcd_extrapolation_factors_ss_os"] = 1.10
 				elif category == "nobtag" and channel == "et":
-					config["qcd_extrapolation_factors_ss_os"] = 1.11
+					config["qcd_extrapolation_factors_ss_os"] = 1.07
 				elif category == "btag" and channel == "et":
-					config["qcd_extrapolation_factors_ss_os"] = 1.16
+					config["qcd_extrapolation_factors_ss_os"] = 1.19
 				elif category == "inclusive" and channel == "et":
-					config["qcd_extrapolation_factors_ss_os"] = 1.13
+					config["qcd_extrapolation_factors_ss_os"] = 1.09
 
 				for index,value in enumerate(config["weights"]):
 					if "ff_norm" in config["nicks"][index]:

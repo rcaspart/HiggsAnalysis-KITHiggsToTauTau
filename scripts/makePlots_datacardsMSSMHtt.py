@@ -450,17 +450,17 @@ if __name__ == "__main__":
 
 						# set qcd os-ss extrapolation factors
 						if category in ["mt_nobtag_tight", "mt_nobtag_loosemt", "mt_nobtag"]:
-							config["qcd_extrapolation_factors_ss_os"] = 1.14
+							config["qcd_extrapolation_factors_ss_os"] = 1.10
 						elif category in ["mt_btag_tight", "mt_btag_loosemt", "mt_btag"]:
-							config["qcd_extrapolation_factors_ss_os"] = 1.01
+							config["qcd_extrapolation_factors_ss_os"] = 1.05
 						elif category in ["mt_inclusive_tight", "mt_inclusive_loosemt", "mt_inclusive"]:
-							config["qcd_extrapolation_factors_ss_os"] = 1.12
+							config["qcd_extrapolation_factors_ss_os"] = 1.10
 						elif category in ["et_nobtag_tight", "et_nobtag_loosemt", "et_nobtag"]:
-							config["qcd_extrapolation_factors_ss_os"] = 1.11
+							config["qcd_extrapolation_factors_ss_os"] = 1.07
 						elif category in ["et_btag_tight", "et_btag_loosemt", "et_btag"]:
-							config["qcd_extrapolation_factors_ss_os"] = 1.16
+							config["qcd_extrapolation_factors_ss_os"] = 1.19
 						elif category in ["et_inclusive_tight", "et_inclusive_loosemt", "et_inclusive"]:
-							config["qcd_extrapolation_factors_ss_os"] = 1.13
+							config["qcd_extrapolation_factors_ss_os"] = 1.09
 
 						# modify cut strings for shape uncertainties. Do not apply weights to data 
 						for index,value in enumerate(config["weights"]):
