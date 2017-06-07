@@ -372,17 +372,17 @@ if __name__ == "__main__":
 					if last_loop:
 						config = channel_config
 				if category == "nobtag" and channel == "mt":
-					config["qcd_extrapolation_factors_ss_os"] = 1.12
+					config["qcd_extrapolation_factors_ss_os"] = 1.14
 				elif category == "btag" and channel == "mt":
-					config["qcd_extrapolation_factors_ss_os"] = 1.08
+					config["qcd_extrapolation_factors_ss_os"] = 1.01
 				elif category == "inclusive" and channel == "mt":
-					config["qcd_extrapolation_factors_ss_os"] = 1.10
+					config["qcd_extrapolation_factors_ss_os"] = 1.12
 				elif category == "nobtag" and channel == "et":
-					config["qcd_extrapolation_factors_ss_os"] = 1.02
+					config["qcd_extrapolation_factors_ss_os"] = 1.11
 				elif category == "btag" and channel == "et":
-					config["qcd_extrapolation_factors_ss_os"] = 1.21
+					config["qcd_extrapolation_factors_ss_os"] = 1.16
 				elif category == "inclusive" and channel == "et":
-					config["qcd_extrapolation_factors_ss_os"] = 1.04
+					config["qcd_extrapolation_factors_ss_os"] = 1.13
 
 				for index,value in enumerate(config["weights"]):
 					if "ff_norm" in config["nicks"][index]:
@@ -480,8 +480,9 @@ if __name__ == "__main__":
 					config["legend"] = [0.55, 0.65, 0.9, 0.88]
 				else:
 					config["y_rel_lims"] = [0.5, 10.0] if "--y-log" in args.args else [0.0, 1.5 if args.ratio or args.integrated_sob or args.sbratio else 1.4]
-					config["legend"] = [0.23, 0.63, 0.9, 0.83] if args.ratio or args.integrated_sob or args.sbratio else [0.23, 0.73, 0.9, 0.89]
-					config["legend_cols"] = 3
+					# config["legend"] = [0.23, 0.63, 0.9, 0.83] if args.ratio or args.integrated_sob or args.sbratio else [0.23, 0.73, 0.9, 0.89]
+					config["legend"] = [0.7, 0.4, 0.95, 0.83] if args.ratio or args.integrated_sob or args.sbratio else [0.7, 0.5, 0.9, 0.85]
+					# config["legend_cols"] = 3
 				if not args.shapes:
 					if not args.lumi is None:
 						config["lumis"] = [float("%.1f" % args.lumi)]

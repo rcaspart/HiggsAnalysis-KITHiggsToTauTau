@@ -405,7 +405,7 @@ if __name__ == "__main__":
 					if args.fakefactor_method is not None:
 						cut_type = "mssm2016fffull"
 					else:
-						cut_type = "mssm2016full"
+						cut_type = "mssm2016fffull"
 				
 				for shape_systematic, list_of_samples in samples_dict[channel]:
 					nominal = (shape_systematic == "nominal")
