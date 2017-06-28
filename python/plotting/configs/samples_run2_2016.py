@@ -2514,15 +2514,24 @@ class Samples(samples.SamplesBase):
 						isolationDefinition = "(byMediumIsolationMVArun2v1DBoldDMwLT_1 > 0.5 && byLooseIsolationMVArun2v1DBoldDMwLT_2 > 0.5 && byMediumIsolationMVArun2v1DBoldDMwLT_2 < 0.5)"
 					else:
 						isolationDefinition = "(byMediumIsolationMVArun2v1DBoldDMwLT_1 > 0.5 && byLooseIsolationMVArun2v1DBoldDMwLT_2 > 0.5 && byVTightIsolationMVArun2v1DBoldDMwLT_2 < 0.5)"
+
+					is_btag_category = (category == "catHttMSSM13TeV_tt_btag")
+					ptdep = "(1.0)"
+					if is_btag_category:
+						ptdep = "((((0.0<=pt_1)*(pt_1<60.0)*(0.0<=m_vis)*(m_vis<100.0))*1.561)+(((0.0<=pt_1)*(pt_1<60.0)*(100.0<=m_vis)*(m_vis<150.0))*1.999)+(((0.0<=pt_1)*(pt_1<60.0)*(150.0<=m_vis))*1.763)+(((60.0<=pt_1)*(pt_1<80.0)*(0.0<=m_vis)*(m_vis<100.0))*1.485)+(((60.0<=pt_1)*(pt_1<80.0)*(100.0<=m_vis)*(m_vis<150.0))*1.796)+(((60.0<=pt_1)*(pt_1<80.0)*(150.0<=m_vis))*1.817)+(((80.0<=pt_1)*(0.0<=m_vis)*(m_vis<100.0))*2.302)+(((80.0<=pt_1)*(100.0<=m_vis)*(m_vis<150.0))*1.655)+(((80.0<=pt_1)*(150.0<=m_vis))*1.326))"
+					else:
+						ptdep = "((((0.0<=pt_1)*(pt_1<50.0)*(0.0<=m_vis)*(m_vis<80.0))*2.190)+(((0.0<=pt_1)*(pt_1<50.0)*(80.0<=m_vis)*(m_vis<120.0))*1.842)+(((0.0<=pt_1)*(pt_1<50.0)*(120.0<=m_vis)*(m_vis<200.0))*1.844)+(((0.0<=pt_1)*(pt_1<50.0)*(200.0<=m_vis)*(m_vis<300.0))*2.208)+(((0.0<=pt_1)*(pt_1<50.0)*(300.0<=m_vis))*2.082)+(((50.0<=pt_1)*(pt_1<70.0)*(0.0<=m_vis)*(m_vis<80.0))*1.760)+(((50.0<=pt_1)*(pt_1<70.0)*(80.0<=m_vis)*(m_vis<120.0))*1.749)+(((50.0<=pt_1)*(pt_1<70.0)*(120.0<=m_vis)*(m_vis<200.0))*1.730)+(((50.0<=pt_1)*(pt_1<70.0)*(200.0<=m_vis)*(m_vis<300.0))*1.846)+(((50.0<=pt_1)*(pt_1<70.0)*(300.0<=m_vis))*2.001)+(((70.0<=pt_1)*(pt_1<90.0)*(0.0<=m_vis)*(m_vis<80.0))*1.775)+(((70.0<=pt_1)*(pt_1<90.0)*(80.0<=m_vis)*(m_vis<120.0))*1.752)+(((70.0<=pt_1)*(pt_1<90.0)*(120.0<=m_vis)*(m_vis<200.0))*1.628)+(((70.0<=pt_1)*(pt_1<90.0)*(200.0<=m_vis)*(m_vis<300.0))*1.654)+(((70.0<=pt_1)*(pt_1<90.0)*(300.0<=m_vis))*1.685)+(((90.0<=pt_1)*(0.0<m_vis)*(m_vis<=80.0))*1.714)+(((90.0<pt_1)*(80.0<=m_vis)*(m_vis<120.0))*2.410)+(((90.0<=pt_1)*(120.0<=m_vis)*(m_vis<200.0))*1.452)+(((90.0<=pt_1)*(200.0<=m_vis)*(m_vis<300.0))*1.562)+(((90.0<=pt_1)*(300.0<=m_vis))*1.501))"
+
+
 					data_selection_weights = {
-						"qcd_shape" : data_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["iso_1", "iso_2"], cut_type=cut_type)+"*"+isolationDefinition,
-						"qcd_signal_ss" : data_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os"], cut_type=cut_type)+"*((q_1*q_2)>0.0)",
-						"qcd_relaxed_ss" : data_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os", "iso_1", "iso_2"], cut_type=cut_type)+"*((q_1*q_2)>0.0)"+"*"+isolationDefinition
+						"qcd_shape" : data_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["iso_1", "iso_2"], cut_type=cut_type)+"*"+isolationDefinition+"*"+ptdep,
+						# "qcd_signal_ss" : data_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os"], cut_type=cut_type)+"*((q_1*q_2)>0.0)",
+						# "qcd_relaxed_ss" : data_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os", "iso_1", "iso_2"], cut_type=cut_type)+"*((q_1*q_2)>0.0)"+"*"+isolationDefinition
 						}
 					mc_selection_weights = {
-						"qcd_shape" : mc_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["iso_1", "iso_2"], cut_type=cut_type)+"*"+isolationDefinition,
-						"qcd_signal_ss" : mc_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os"], cut_type=cut_type)+"*((q_1*q_2)>0.0)",
-						"qcd_relaxed_ss" : mc_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os", "iso_1", "iso_2"], cut_type=cut_type)+"*((q_1*q_2)>0.0)"+"*"+isolationDefinition
+						"qcd_shape" : mc_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["iso_1", "iso_2"], cut_type=cut_type)+"*"+isolationDefinition+"*"+ptdep,
+						# "qcd_signal_ss" : mc_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os"], cut_type=cut_type)+"*((q_1*q_2)>0.0)",
+						# "qcd_relaxed_ss" : mc_weight+"*"+weight+"*eventWeight*"+self._cut_string(channel, exclude_cuts=exclude_cuts+["os", "iso_1", "iso_2"], cut_type=cut_type)+"*((q_1*q_2)>0.0)"+"*"+isolationDefinition
 						}
 					for key in mc_selection_weights:
 						Samples._add_input(
