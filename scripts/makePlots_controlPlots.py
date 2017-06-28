@@ -353,6 +353,7 @@ if __name__ == "__main__":
 						lumi  =  args.lumi * 1000,
 						exclude_cuts = args.exclude_cuts + json_config.pop("exclude_cuts", []),
 						blind_expression = channel + "_" + quantity,
+						quantity=quantity,
 						# fakefactor_method = args.fakefactor_method,
 						stack_signal = args.stack_signal,
 						scale_signal = args.scale_signal,
@@ -461,6 +462,7 @@ if __name__ == "__main__":
 					config.setdefault("legend_markers", []).extend(["ELP"]*2)
 					config.setdefault("labels", []).extend([""] * 2)
 					config.setdefault("stacks", []).extend(["unc", "ratio"])
+					config["y_subplot_label"] = "Obs./Exp."
 
 
 				for analysis_module in args.analysis_modules:
@@ -481,7 +483,13 @@ if __name__ == "__main__":
 				else:
 					config["y_rel_lims"] = [0.5, 10.0] if "--y-log" in args.args else [0.0, 1.5 if args.ratio or args.integrated_sob or args.sbratio else 1.4]
 					# config["legend"] = [0.23, 0.63, 0.9, 0.83] if args.ratio or args.integrated_sob or args.sbratio else [0.23, 0.73, 0.9, 0.89]
-					config["legend"] = [0.7, 0.4, 0.95, 0.83] if args.ratio or args.integrated_sob or args.sbratio else [0.7, 0.5, 0.9, 0.85]
+					offset = 0.0
+					if "data" in args.samples:
+						offset = 0.1
+					if args.ratio or args.integrated_sob or args.sbratio:
+						offset = 0.05
+
+					config["legend"] = [0.7-offset, 0.4, 0.95, 0.83] if args.scale_signal == 1.0 and (args.ratio or args.integrated_sob or args.sbratio) else [0.55-offset, 0.4, 0.95, 0.83] if args.scale_signal != 1.0 and (args.ratio or args.integrated_sob or args.sbratio) else [0.5-offset, 0.5, 0.9, 0.85] if args.scale_signal != 1.0 else [0.7-offset, 0.5, 0.9, 0.85]
 					# config["legend_cols"] = 3
 				if not args.shapes:
 					if not args.lumi is None:

@@ -19,101 +19,102 @@ import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.systematics_run2 as syste
 
 samples_dict = {
 		'et' : [
-			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
-			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("etaues1prong0pi", ["zl"]),
-			("etaues1prong1pi", ["zl"]),
-			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
-			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh']),
+            ("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
+            ("elees",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            ("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("etaues1prong0pi", ["zl","wj","qcd"]),
+            ("etaues1prong1pi", ["zl","wj","qcd"]),
+            ("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("zpt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptes",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
+            ("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','wj','qcd','ggh','bbh']),
 			('nominal',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
 		],
 		'mt' : [
-			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
-			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
-			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh']),
+            ("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
+            ("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("zpt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptes",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
+            ("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','wj','qcd','ggh','bbh']),
 			('nominal',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
 		],
 		'tt' : [
-			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
-			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
-			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metenclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh']),
-			('nominal',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+            ("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
+            ("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+            ("zpt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptes",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
+            ("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
+            ("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			# ('metenclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+            # ("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','wj','qcd','ggh','bbh']),
+            ('nominal',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
 		],
 		'em' : [
-			("toppt",["ttj"]),("taues",["ztt","ggh","bbh"]),
-			("zpt",["ztt","zll"]),
-			("zptes",["ztt","zll"]),
-			("zptstat0pt",["ztt","zll"]),
-			("zptstat40pt",["ztt","zll"]),
-			("zptstat80pt",["ztt","zll"]),
-			("zptttbar",["ztt","zll"]),
-			('btag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metunclustereden',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('jec',['ztt','zll','ttj','vv','ggh','bbh']),
+			# ("toppt",["ttj"]),("taues",["ztt","ggh","bbh"]),
+			# ("zpt",["ztt","zll"]),
+			# ("zptes",["ztt","zll"]),
+			# ("zptstat0pt",["ztt","zll"]),
+			# ("zptstat40pt",["ztt","zll"]),
+			# ("zptstat80pt",["ztt","zll"]),
+			# ("zptttbar",["ztt","zll"]),
+			# ('btag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			# ('mistag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			# ('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			# ('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			# ('metjeten',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			# ('metunclustereden',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+            ('jec',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
 			('nominal',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh'])
 		],
 		'mm' : [
-			("toppt",["ttj","wj","qcd"]),
-			("zpt",["ztt","zll","wj","qcd"]),
-			("wfake",['ztt','zll','ttj','vv','wj','qcd']),
-			('btag',['ztt','zll','ttj','vv','wj','qcd']),
-			('mistag',['ztt','zll','ttj','vv','wj','qcd']),
-			('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd']),
-			('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd']),
-			('metjeten',['ztt','zll','ttj','vv','wj','qcd']),
-			('metunclustereden',['ztt','zll','ttj','vv','wj','qcd']),
-			('jec',['ztt','zl','zj','ttj','vv','ggh','bbh']),
+			# ("toppt",["ttj","wj","qcd"]),
+			# ("zpt",["ztt","zll","wj","qcd"]),
+			# ("wfake",['ztt','zll','ttj','vv','wj','qcd']),
+			# ('btag',['ztt','zll','ttj','vv','wj','qcd']),
+			# ('mistag',['ztt','zll','ttj','vv','wj','qcd']),
+			# ('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd']),
+			# ('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd']),
+			# ('metjeten',['ztt','zll','ttj','vv','wj','qcd']),
+			# ('metunclustereden',['ztt','zll','ttj','vv','wj','qcd']),
+            # ('jec',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
 			('nominal',['ztt','zll','ttj','vv','wj','qcd'])
 		]
 	}
@@ -126,6 +127,7 @@ shapes = {
 	"metunclustereden" :"CMS_unclustered_energy_met_unc_13TeV",
 	"jec" : "CMS_scale_j_13TeV",
 	"toppt" : "CMS_htt_ttbarShape_13TeV",
+    "elees" : "CMS_scale_e_{CHANNEL}_13TeV",
 	"taupt" : "CMS_eff_t_mssmHigh_{CHANNEL}_13TeV",
 	"taues" : "CMS_scale_t_{CHANNEL}_13TeV",
 	"taues1prong0pi" : "CMS_scale_t_1prong0pi0_13TeV",
@@ -183,6 +185,7 @@ shapes_weight_dict = {
 		"zptstat80pt" : ("zPtWeightStatPt80Down/zPtReweightWeight","zPtWeightStatPt80Up/zPtReweightWeight"),
 		"zptttbar" : ("zPtWeightTTbarDown/zPtReweightWeight","zPtWeightTTbarUp/zPtReweightWeight"),
 		"taupt" : ("(1-0.0002*had_gen_match_pT_1)*(1-0.0002*had_gen_match_pT_2)", "(1+0.0002*had_gen_match_pT_1)*(1+0.0002*had_gen_match_pT_2)"),
+		"elees" : ("1.0", "1.0"),
 		"taues" : ("1.0", "1.0"),
 		"taues1prong0pi" : ("1.0", "1.0"),
 		"taues1prong1pi" : ("1.0", "1.0"),
@@ -603,6 +606,12 @@ if __name__ == "__main__":
 							for index, folder in enumerate(config["folders"]):
 								if not "Run201" in config["files"][index]:
 									config["folders"][index] = config["folders"][index].replace("nominal", replacestring)
+						# elees
+						if shape_systematic == "elees":
+							replacestring = "eleEsUp" if shift_up else "eleEsDown"
+							for index, folder in enumerate(config["folders"]):
+								if not "Run201" in config["files"][index]:
+									config["folders"][index] = config["folders"][index].replace("nominal", replacestring)
 						# taues
 						if shape_systematic == "taues1prong0pi":
 							replacestring = "tauEsOneProngUp" if shift_up else "tauEsOneProngDown"
@@ -714,7 +723,13 @@ if __name__ == "__main__":
 								for index, folder in enumerate(config["folders"]):
 									if not "Run201" in config["files"][index]:
 										config["folders"][index] = config["folders"][index].replace("nominal", replacestring)
-							# taues
+							# elees
+							if shape_systematic == "elees":
+								replacestring = "eleEsUp" if shift_up else "eleEsDown"
+								for index, folder in enumerate(config["folders"]):
+									if not "Run201" in config["files"][index]:
+										config["folders"][index] = config["folders"][index].replace("nominal", replacestring)
+							#taues
 							if shape_systematic == "taues1prong0pi":
 								replacestring = "tauEsOneProngUp" if shift_up else "tauEsOneProngDown"
 								for index, folder in enumerate(config["folders"]):
